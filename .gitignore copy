@@ -1,8 +1,0 @@
-.DS_Store
-.vscode
-node_modules
-npm-debug.log
-yarn-error.log
-test-results.xml
-coverage
-.env
