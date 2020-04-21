@@ -9,7 +9,7 @@ const init = () => {
     categoryIds.push(cateId)
   }
 
-  for (let i = 0; i < 30; i++) {
+  for (let i = 0; i < 27; i++) {
     const productId = new mongoose.Types.ObjectId()
     productIds.push(productId)
   }
