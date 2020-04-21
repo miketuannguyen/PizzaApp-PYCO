@@ -1,5 +1,6 @@
 import * as userController from '../controllers/user.controller'
 import basicResponse from '../response'
+import { userRegisterSchema, userLoginSchema } from '../validations/user.schema'
 
 const userRoute = [
   {
@@ -12,6 +13,9 @@ const userRoute = [
         'hapi-swagger': {
           responses: basicResponse
         }
+      },
+      validate: {
+        payload: userRegisterSchema
       }
     },
     handler: userController.register
@@ -26,6 +30,9 @@ const userRoute = [
         'hapi-swagger': {
           responses: basicResponse
         }
+      },
+      validate: {
+        payload: userLoginSchema
       }
     },
     handler: userController.login
