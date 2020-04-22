@@ -2,6 +2,7 @@ import Inert from '@hapi/inert'
 import Vision from '@hapi/vision'
 import HapiSwagger from 'hapi-swagger'
 import config from '../config'
+import { userSchema } from '../validations/user.schema'
 
 export default [
   Inert,
@@ -20,6 +21,10 @@ export default [
           name: 'Authorization',
           in: 'header'
         }
+      },
+      definitions: {
+        type: 'object',
+        properties: userSchema
       }
     }
   }

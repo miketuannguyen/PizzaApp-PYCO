@@ -1,5 +1,8 @@
 import * as categoryController from '../controllers/category.controller'
 import basicResponse from '../response'
+import { categorySchema } from '../validations/category.schema'
+import { productSchema } from '../validations/product.schema'
+import Joi from '@hapi/joi'
 
 const categoryRoute = [
   {
@@ -10,7 +13,13 @@ const categoryRoute = [
       description: 'get all categories',
       plugins: {
         'hapi-swagger': {
-          responses: basicResponse
+          responses: {
+            200: {
+              description: 'Success',
+              schema: Joi.array().items(categorySchema)
+            },
+            ...basicResponse
+          }
         }
       }
     },
@@ -24,7 +33,13 @@ const categoryRoute = [
       description: 'get all products of category',
       plugins: {
         'hapi-swagger': {
-          responses: basicResponse
+          responses: {
+            200: {
+              description: 'Success',
+              schema: Joi.array().items(productSchema)
+            },
+            ...basicResponse
+          }
         }
       }
     },

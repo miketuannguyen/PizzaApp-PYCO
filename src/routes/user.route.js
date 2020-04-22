@@ -1,6 +1,7 @@
 import * as userController from '../controllers/user.controller'
 import basicResponse from '../response'
-import { userRegisterSchema, userLoginSchema } from '../validations/user.schema'
+import { userSchema, userRegisterSchema, userLoginSchema } from '../validations/user.schema'
+import Joi from '@hapi/joi'
 
 const userRoute = [
   {
@@ -11,7 +12,13 @@ const userRoute = [
       description: 'register user',
       plugins: {
         'hapi-swagger': {
-          responses: basicResponse
+          responses: {
+            200: {
+              description: 'Success',
+              schema: userSchema
+            },
+            ...basicResponse
+          }
         }
       },
       validate: {
@@ -28,14 +35,25 @@ const userRoute = [
       description: 'login user',
       plugins: {
         'hapi-swagger': {
-          responses: basicResponse
+          responses: {
+            200: {
+              description: 'Success',
+              schema: Joi.object({
+                user: userSchema,
+                token: Joi.string().required().example('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJp' +
+                'ZCI6IjVlOWU5Njk3NDU3ODdiMmNjNDUyNzU0ZiIsImlhdCI6MTU4NzU1Mzk1NSwiZXhwIjoxNTg3NTYxM' +
+                'TU1fQ.ma6JnW8FyOvMEny8Xc7H0-z8aeqrseb_59WhFc3NYzo')
+              })
+            },
+            ...basicResponse
+          }
+        },
+        validate: {
+          payload: userLoginSchema
         }
       },
-      validate: {
-        payload: userLoginSchema
-      }
-    },
-    handler: userController.login
+      handler: userController.login
+    }
   }
 ]
 

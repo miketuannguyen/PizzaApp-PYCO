@@ -1,7 +1,4 @@
 const basicResponse = {
-  200: {
-    description: 'Success'
-  },
   400: {
     description: 'BadRequest'
   },
