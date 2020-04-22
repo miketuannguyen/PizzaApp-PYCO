@@ -20,7 +20,7 @@ export const createUser = async (userInfo) => {
 
 export const findByPhone = async (phone) => {
   try {
-    return await userModel.findOne({ phone: phone })
+    return await userModel.findOne({ phone })
   }
   catch (err) {
     debug.error(NAMESPACE, '', err)

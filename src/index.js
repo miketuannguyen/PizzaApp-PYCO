@@ -20,7 +20,11 @@ const init = async () => {
   await server.start();
   server.events.on('response', function (request) {
     // eslint-disable-next-line no-console
-    console.log(request.info.remoteAddress + ': ' + request.method.toUpperCase() + ' ' + request.url.pathname + ' --> ' + request.response.statusCode);
+    console.log(
+      request.info.remoteAddress + ': ' +
+      request.method.toUpperCase() + ' ' +
+      request.url.pathname + ' --> ' +
+      request.response.statusCode);
   });
   debug.log(NAMESPACE, 'INFO: Server running on %s', server.info.uri);
   connect();
