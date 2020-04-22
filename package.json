@@ -10,6 +10,9 @@
     "lint": "eslint src",
     "build": "babel src -d dist"
   },
+  "pre-commit": [
+    "lint"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/nhoknguyen00/PizzaApp-PYCO.git"
@@ -66,6 +69,7 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.1",
-    "nodemon": "^2.0.3"
+    "nodemon": "^2.0.3",
+    "pre-commit": "^1.2.2"
   }
 }
