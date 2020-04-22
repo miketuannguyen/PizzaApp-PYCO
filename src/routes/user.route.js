@@ -43,7 +43,7 @@ const userRoute = [
                 token: Joi.string().required().example('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9' +
                 '.eyJpZCI6IjVlOWU5Njk3NDU3ODdiMmNjNDUyNzU0ZiIsImlhdCI6MTU4NzU1Mzk1NSwiZXhwIjoxNTg3NTYxMTU1fQ' +
                 '.ma6JnW8FyOvMEny8Xc7H0-z8aeqrseb_59WhFc3NYzo')
-              })
+              }).label('User Login Response')
             },
             ...basicResponse
           }

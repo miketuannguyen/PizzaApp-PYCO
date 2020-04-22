@@ -16,7 +16,7 @@ const categoryRoute = [
           responses: {
             200: {
               description: 'Success',
-              schema: Joi.array().items(categorySchema)
+              schema: Joi.array().items(categorySchema).label('Category Array')
             },
             ...basicResponse
           }
@@ -36,7 +36,7 @@ const categoryRoute = [
           responses: {
             200: {
               description: 'Success',
-              schema: Joi.array().items(productSchema)
+              schema: Joi.array().items(productSchema).label('Product Array')
             },
             ...basicResponse
           }
