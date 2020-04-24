@@ -8,7 +8,8 @@ module.exports = {
       await db.collection('users').insertMany([{
         _id: userIds[0],
         phone: '0903593963',
-        password: '$2a$08$2UdW9lFdKV3LphhZMVaAROibklNye9639kodWYa5uLG9wMI0GOVeK', //password hashed from 123456789
+        password: '$2a$08$2UdW9lFdKV3LphhZMVaAROibklNye9639kodWYa5uLG9wMI0GOVeK',
+        name: 'Luu Tuan Nguyen', //password hashed from 123456789
         address: faker.address.streetAddress() + ' ' + faker.address.streetName() + ' ' + faker.address.country()
       }])
     }

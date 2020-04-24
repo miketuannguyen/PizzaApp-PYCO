@@ -3,6 +3,7 @@ const mongoose = require('mongoose')
 const categoryIds = []
 const productIds = []
 const userIds = []
+const optionIds = []
 
 const init = () => {
   for (let i = 0; i < 5; i++) {
@@ -19,8 +20,13 @@ const init = () => {
     const userId = new mongoose.Types.ObjectId()
     userIds.push(userId)
   }
+
+  for (let i = 0; i < 24; i++) {
+    const optionId = new mongoose.Types.ObjectId()
+    optionIds.push(optionId)
+  }
 }
 
 init()
 
-module.exports = { categoryIds, productIds, userIds }
+module.exports = { categoryIds, productIds, userIds, optionIds }

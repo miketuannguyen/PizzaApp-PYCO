@@ -20,6 +20,11 @@ export const userSchema = Joi.object({
     .min(6)
     .max(20)
     .example('123456789'),
+  name: Joi
+    .string()
+    .trim()
+    .required()
+    .example('Luu Tuan Nguyen'),
   address: Joi
     .string()
     .trim()

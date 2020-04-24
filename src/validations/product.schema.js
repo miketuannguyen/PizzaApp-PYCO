@@ -19,7 +19,7 @@ export const productSchema = Joi.object({
   price: Joi
     .number()
     .required()
-    .example('200000'),
+    .example('11'),
   rate: Joi
     .number()
     .required()
