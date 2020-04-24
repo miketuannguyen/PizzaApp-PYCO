@@ -1,6 +1,11 @@
 import Joi from '@hapi/joi'
 
 export const productSchema = Joi.object({
+  _id: Joi
+    .string()
+    .trim()
+    .required()
+    .example('5e9e969745787b2cc452754f'),
   title: Joi
     .string()
     .trim()
