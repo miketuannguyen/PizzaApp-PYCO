@@ -21,5 +21,7 @@ const mongoConfig = {
   changelogCollectionName: 'changelog'
 };
 
+console.log('Mongo URI: ', mongoConfig.mongodb.url)
+
 // Return the config as a promise
 module.exports = mongoConfig;

@@ -4,4 +4,4 @@ yarn-error.log
 test-results.xml
 coverage
 .env
-dist
+build

@@ -4,11 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "babel-node src/index.js",
+    "start": "node src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon src/index.js --exec babel-node",
     "lint": "eslint src",
-    "build": "babel src -d dist"
+    "build": "babel src -d build"
   },
   "pre-commit": [
     "lint"
@@ -24,9 +24,6 @@
   },
   "homepage": "https://github.com/nhoknguyen00/PizzaApp-PYCO#readme",
   "dependencies": {
-    "@babel/cli": "^7.8.4",
-    "@babel/plugin-transform-modules-commonjs": "^7.9.0",
-    "@babel/preset-es2015": "^7.0.0-beta.53",
     "@hapi/boom": "^9.1.0",
     "@hapi/hapi": "^19.1.1",
     "@hapi/inert": "^6.0.1",
@@ -48,6 +45,10 @@
     "mongoose": "^5.9.10"
   },
   "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/plugin-transform-modules-commonjs": "^7.9.0",
+    "@babel/preset-es2015": "^7.0.0-beta.53",
+    "@babel/runtime-corejs2": "^7.9.2",
     "@babel/core": "^7.9.0",
     "@babel/node": "^7.8.7",
     "@babel/plugin-proposal-class-properties": "^7.8.3",
