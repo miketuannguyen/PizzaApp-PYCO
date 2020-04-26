@@ -10,4 +10,4 @@ COPY migrate-mongo-config.js .
 RUN ls -l .
 RUN npm install
 EXPOSE 3000
-CMD ["npm", "start"]
+CMD npx migrate-mongo up && npm start
