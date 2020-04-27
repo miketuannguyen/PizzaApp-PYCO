@@ -5,10 +5,11 @@
   "main": "index.js",
   "scripts": {
     "start": "node src/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon src/index.js --exec babel-node",
     "lint": "eslint src",
-    "build": "babel src -d build"
+    "build": "babel src -d build",
+    "test": "jest",
+    "test:coverage": "jest --coverage test"
   },
   "pre-commit": [
     "lint"
@@ -46,9 +47,6 @@
   },
   "devDependencies": {
     "@babel/cli": "^7.8.4",
-    "@babel/plugin-transform-modules-commonjs": "^7.9.0",
-    "@babel/preset-es2015": "^7.0.0-beta.53",
-    "@babel/runtime-corejs2": "^7.9.2",
     "@babel/core": "^7.9.0",
     "@babel/node": "^7.8.7",
     "@babel/plugin-proposal-class-properties": "^7.8.3",
@@ -57,10 +55,15 @@
     "@babel/plugin-proposal-export-namespace-from": "^7.8.3",
     "@babel/plugin-proposal-function-bind": "^7.8.3",
     "@babel/plugin-proposal-object-rest-spread": "^7.9.5",
+    "@babel/plugin-transform-modules-commonjs": "^7.9.0",
     "@babel/plugin-transform-runtime": "^7.9.0",
     "@babel/preset-env": "^7.9.5",
+    "@babel/preset-es2015": "^7.0.0-beta.53",
     "@babel/preset-typescript": "^7.9.0",
+    "@babel/runtime-corejs2": "^7.9.2",
+    "@shelf/jest-mongodb": "^1.1.5",
     "babel-eslint": "^10.1.0",
+    "babel-jest": "^25.4.0",
     "babel-plugin-add-module-exports": "^1.0.2",
     "babel-plugin-syntax-async-functions": "^6.13.0",
     "eslint": "^6.8.0",
@@ -70,6 +73,8 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.1",
+    "jest": "^25.4.0",
+    "jest-html-reporters": "^1.2.1",
     "nodemon": "^2.0.3",
     "pre-commit": "^1.2.2"
   }

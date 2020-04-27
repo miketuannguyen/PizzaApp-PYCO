@@ -5,3 +5,4 @@ test-results.xml
 coverage
 .env
 build
+coverage
