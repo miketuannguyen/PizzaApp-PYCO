@@ -1,13 +1,10 @@
-const basicResponse = {
-  400: {
-    description: 'BadRequest'
-  },
+const basicErrorResponse = {
   404: {
-    description: 'ResourceNotFound'
+    description: 'Resource Not Found'
   },
   500: {
-    description: 'InternalServerError'
+    description: 'Internal Server Error'
   }
 };
 
-export default basicResponse
+export default basicErrorResponse

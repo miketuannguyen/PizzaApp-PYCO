@@ -1,5 +1,5 @@
 import * as userController from '../controllers/user.controller'
-import basicResponse from '../response'
+import basicErrorResponse from '../response'
 import { userSchema, userRegisterSchema, userLoginSchema } from '../validations/user.schema'
 import Joi from '@hapi/joi'
 
@@ -17,7 +17,7 @@ const userRoute = [
               description: 'Success',
               schema: userSchema
             },
-            ...basicResponse
+            ...basicErrorResponse
           }
         }
       },
@@ -45,7 +45,7 @@ const userRoute = [
                 '.ma6JnW8FyOvMEny8Xc7H0-z8aeqrseb_59WhFc3NYzo')
               }).label('User Login Response')
             },
-            ...basicResponse
+            ...basicErrorResponse
           }
         },
         validate: {

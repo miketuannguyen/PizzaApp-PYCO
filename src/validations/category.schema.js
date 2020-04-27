@@ -17,3 +17,5 @@ export const categorySchema = Joi.object({
     .required()
     .example('https://pasgo.vn/Upload/anh-chi-tiet/nha-hang-the-pizza-company-royal-city-1-normal-1320212618915.jpg')
 }).label('Category')
+
+export const categoryArraySchema = Joi.array().items(categorySchema).label('Category Array')

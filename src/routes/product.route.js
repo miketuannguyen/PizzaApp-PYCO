@@ -1,5 +1,5 @@
 import * as productController from '../controllers/product.controller'
-import basicResponse from '../response'
+import basicErrorResponse from '../response'
 import { productSchema } from '../validations/product.schema'
 import { optionSchema } from '../validations/option.schema'
 import Joi from '@hapi/joi'
@@ -18,7 +18,7 @@ const productRoute = [
               description: 'Success',
               schema: productSchema
             },
-            ...basicResponse
+            ...basicErrorResponse
           }
         }
       },
@@ -38,7 +38,7 @@ const productRoute = [
               description: 'Success',
               schema: Joi.array().items(optionSchema).label('Option Array')
             },
-            ...basicResponse
+            ...basicErrorResponse
           }
         }
       },

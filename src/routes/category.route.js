@@ -1,8 +1,7 @@
 import * as categoryController from '../controllers/category.controller'
-import basicResponse from '../response'
-import { categorySchema } from '../validations/category.schema'
-import { productSchema } from '../validations/product.schema'
-import Joi from '@hapi/joi'
+import basicErrorResponse from '../response'
+import { categoryArraySchema } from '../validations/category.schema'
+import { productArraySchema } from '../validations/product.schema'
 
 const categoryRoute = [
   {
@@ -16,9 +15,9 @@ const categoryRoute = [
           responses: {
             200: {
               description: 'Success',
-              schema: Joi.array().items(categorySchema).label('Category Array')
+              schema: categoryArraySchema
             },
-            ...basicResponse
+            ...basicErrorResponse
           }
         }
       }
@@ -36,9 +35,9 @@ const categoryRoute = [
           responses: {
             200: {
               description: 'Success',
-              schema: Joi.array().items(productSchema).label('Product Array')
+              schema: productArraySchema
             },
-            ...basicResponse
+            ...basicErrorResponse
           }
         }
       }

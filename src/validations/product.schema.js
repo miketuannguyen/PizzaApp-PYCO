@@ -35,3 +35,5 @@ export const productSchema = Joi.object({
     .required()
     .example('5e9e969745787b2cc452752f')
 }).label('Product')
+
+export const productArraySchema = Joi.array().items(productSchema).label('Product Array')

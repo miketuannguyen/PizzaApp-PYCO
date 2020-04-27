@@ -1,5 +1,5 @@
 import * as orderController from '../controllers/order.controller'
-import basicResponse from '../response'
+import basicErrorResponse from '../response'
 import { orderSchema } from '../validations/order.schema'
 
 const orderRoute = [
@@ -15,7 +15,7 @@ const orderRoute = [
             200: {
               description: 'Success'
             },
-            ...basicResponse
+            ...basicErrorResponse
           }
         }
       },
