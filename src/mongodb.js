@@ -17,6 +17,7 @@ export const connect = () => {
   }, err => {
     if (err) {
       debug.error(NAMESPACE, 'ERROR: An error happened whilst connecting to mongodb', err);
+      throw err
     }
     else {
       debug.log(NAMESPACE, 'INFO: Connect to mongodb successfully.');

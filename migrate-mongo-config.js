@@ -1,4 +1,8 @@
+const moment = require('moment')
+const debug = require('./src/utils/debug.utils')
 const config = require('./src/config')
+
+const NAMESPACE = `Mongo migration-${moment.utc().toISOString()}`
 
 const mongoConfig = {
   mongodb: {
@@ -21,7 +25,7 @@ const mongoConfig = {
   changelogCollectionName: 'changelog'
 };
 
-console.log('Mongo URI: ', mongoConfig.mongodb.url)
+debug.log(NAMESPACE, 'Mongo migration URI: ', mongoConfig.mongodb.url)
 
 // Return the config as a promise
 module.exports = mongoConfig;

@@ -20,7 +20,7 @@ const init = async () => {
   await server.start();
   server.events.on('response', function (request) {
     // eslint-disable-next-line no-console
-    console.log(
+    debug.log(
       request.info.remoteAddress + ': ' +
       request.method.toUpperCase() + ' ' +
       request.url.pathname + ' --> ' +
