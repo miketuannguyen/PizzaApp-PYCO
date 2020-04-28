@@ -54,4 +54,20 @@ describe('Product repository unit tests', () => {
     const castedProductList = productList.map((prod) => prod.toObject())
     expect(mockProductOfCategory).toIncludeSameMembers(castedProductList);
   })
+
+  test('Should return product with _id match with mock _id', async () => {
+    const mockProduct = {
+      _id: new mongoose.Types.ObjectId(),
+      title: faker.lorem.sentence(),
+      description: faker.lorem.sentence(),
+      price: chance.integer({ min: 0, max: 15 }),
+      rate: chance.floating({ min: 0, max: 5, fixed: 1 }),
+      imageUrl: faker.image.imageUrl(),
+      category: new mongoose.Types.ObjectId()
+    }
+
+    await productModel.create(mockProduct)
+    const productInstance = await productRepo.findProductById(mockProduct._id)
+    expect(productInstance.toObject()).toStrictEqual(mockProduct)
+  })
 })
