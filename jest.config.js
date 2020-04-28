@@ -3,7 +3,7 @@ module.exports = {
   verbose: true,
   reporters: ['default', 'jest-html-reporters'],
   collectCoverage: true,
-  collectCoverageFrom: ['test/**/*.js'],
+  collectCoverageFrom: ['test/*/*.js'],
   coverageThreshold: {
     global: {
       branches: 80,
@@ -17,5 +17,6 @@ module.exports = {
     '^.+\\.[t|j]sx?$': 'babel-jest'
   },
   transformIgnorePatterns: ['<rootDir>/node_modules/'],
-  preset: '@shelf/jest-mongodb'
+  preset: '@shelf/jest-mongodb',
+  setupFilesAfterEnv: ['./jest.setup.js', 'jest-extended']
 }

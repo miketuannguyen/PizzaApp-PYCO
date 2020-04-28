@@ -10,7 +10,8 @@ const categorySchema = new mongoose.Schema(
       type: String,
       required: [true, 'imageUrl is required']
     }
-  }
+  },
+  { versionKey: false }
 );
 
 const Model = mongoose.model('Category', categorySchema)
