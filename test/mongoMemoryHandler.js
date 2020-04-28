@@ -1,6 +1,5 @@
 import mongoose from 'mongoose'
 import { MongoMemoryServer } from 'mongodb-memory-server'
-//import { mongoUri } from '../src/config/index'
 
 const mongoMemory = new MongoMemoryServer()
 
@@ -9,8 +8,8 @@ export const connect = async () => {
 
   const mongooseOpts = {
     useNewUrlParser: true,
-    useUnifiedTopology: true,
-  };
+    useUnifiedTopology: true
+  }
 
   await mongoose.connect(uri, mongooseOpts);
 }
