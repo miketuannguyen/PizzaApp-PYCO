@@ -1,38 +1,51 @@
-'use strict';
+'use strict'
 
-import Hapi from '@hapi/hapi';
+import Hapi from '@hapi/hapi'
 import routes from './routes'
 import plugins from './plugins'
 import config from './config'
-import { connect } from './mongodb'
-import moment from 'moment';
+import { connectMongo } from './mongodb'
+import moment from 'moment'
 import debug from './utils/debug.utils'
 
-const NAMESPACE = `APP-${moment.utc().toISOString()}`
+const appNAMESPACE = `APP-${moment.utc().toISOString()}`
+const dbNAMESPACE = `DATABASE-${moment.utc().toISOString()}`
+let server
 
 const init = async () => {
-  const server = Hapi.server({
+  server = Hapi.server({
     port: config.port,
     host: config.host
-  });
-  server.route(routes);
-  await server.register(plugins);
-  await server.start();
+  })
+
+  try {
+    await connectMongo()
+  }
+  catch (err) {
+    debug.error(dbNAMESPACE, 'ERROR: An error happened whilst connecting to mongodb', err)
+    process.exit(1)
+  }
+
+  await server.route(routes)
+  await server.register(plugins)
+
+  server.events.on('start', () => {
+    debug.log(appNAMESPACE, 'INFO: Server running on %s', server.info.uri)
+  })
+  await server.start()
+
   server.events.on('response', function (request) {
-    // eslint-disable-next-line no-console
     debug.log(
       request.info.remoteAddress + ': ' +
       request.method.toUpperCase() + ' ' +
       request.url.pathname + ' --> ' +
-      request.response.statusCode);
-  });
-  debug.log(NAMESPACE, 'INFO: Server running on %s', server.info.uri);
-  connect();
-};
+      request.response.statusCode)
+  })
+}
 
 process.on('unhandledRejection', (err) => {
-  debug.error(err.message);
-  process.exit(1);
-});
+  debug.error(err.message)
+  process.exit(1)
+})
 
-init();
+init()

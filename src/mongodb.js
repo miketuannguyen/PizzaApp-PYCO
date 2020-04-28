@@ -5,10 +5,10 @@ import moment from 'moment'
 
 const NAMESPACE = `DATABASE-${moment.utc().toISOString()}`
 
-export const connect = () => {
+export const connectMongo = async () => {
   mongoose.Promise = global.Promise;
 
-  mongoose.connect(config.mongoUri, {
+  await mongoose.connect(config.mongoUri, {
     useCreateIndex: true,
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -16,7 +16,6 @@ export const connect = () => {
     poolSize: 10
   }, err => {
     if (err) {
-      debug.error(NAMESPACE, 'ERROR: An error happened whilst connecting to mongodb', err);
       throw err
     }
     else {
@@ -25,6 +24,6 @@ export const connect = () => {
   });
 };
 
-export const disconnect = done => {
+export const disconnectMongo = done => {
   mongoose.disconnect(done);
 };
