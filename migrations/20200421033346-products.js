@@ -1,5 +1,5 @@
 const debug = require('../src/utils/debug.utils')
-const { productIds, categoryIds} = require('../mongoObjectIdSeeds')
+const { productIds, categoryIds } = require('../mongoObjectIdSeeds')
 const chance = require('chance').Chance()
 
 module.exports = {

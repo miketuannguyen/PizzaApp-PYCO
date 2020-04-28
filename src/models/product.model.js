@@ -12,11 +12,14 @@ const productSchema = new mongoose.Schema(
     },
     price: {
       type: Number,
-      required: [true, 'price is required']
+      required: [true, 'price is required'],
+      min: 0
     },
     rate: {
-      type: String,
-      required: [true, 'rate is required']
+      type: Number,
+      required: [true, 'rate is required'],
+      min: 0,
+      max: 5
     },
     imageUrl: {
       type: String,
@@ -27,7 +30,8 @@ const productSchema = new mongoose.Schema(
       ref: 'Category',
       required: true
     }
-  }
+  },
+  { versionKey: false }
 );
 
 const Model = mongoose.model('Product', productSchema)

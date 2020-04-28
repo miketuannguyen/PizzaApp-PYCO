@@ -28,7 +28,7 @@ describe('Category repository unit tests', () => {
 
     await cateModel.insertMany(mockCategories)
 
-    const categoryList = await categoryRepo.findAll({})
+    const categoryList = await categoryRepo.findAll()
     const castedCategoryList = categoryList.map((cate) => cate.toObject())
     expect(mockCategories).toIncludeSameMembers(castedCategoryList);
   })

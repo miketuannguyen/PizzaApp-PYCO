@@ -19,7 +19,8 @@ const optionSchema = new mongoose.Schema(
       ref: 'Product',
       required: true
     }
-  }
+  },
+  { versionKey: false }
 );
 
 const Model = mongoose.model('Option', optionSchema)

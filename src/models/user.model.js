@@ -19,7 +19,8 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: [true, 'address is required']
     }
-  }
+  },
+  { versionKey: false }
 );
 
 userSchema.methods.validPassword = function (password) {
