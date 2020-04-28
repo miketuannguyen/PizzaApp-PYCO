@@ -57,7 +57,7 @@ describe('Product service unit tests', () => {
     expect(mockProductsOfCategory).toIncludeSameMembers(productList);
   })
 
-  test('Should return product with _id match with mock _id', async () => {
+  test('Should return product match with mock product', async () => {
     const productInstance = await productService.findProductById(mockProduct._id)
     expect(productInstance).toStrictEqual(mockProduct)
   })

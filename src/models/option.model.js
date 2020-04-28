@@ -8,7 +8,8 @@ const optionSchema = new mongoose.Schema(
     },
     price: {
       type: Number,
-      required: [true, 'price is required']
+      required: [true, 'price is required'],
+      min: 0
     },
     type: {
       type: String,

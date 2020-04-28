@@ -55,7 +55,7 @@ describe('Product repository unit tests', () => {
     expect(mockProductOfCategory).toIncludeSameMembers(castedProductList);
   })
 
-  test('Should return product with _id match with mock _id', async () => {
+  test('Should return product match with mock product', async () => {
     const mockProduct = {
       _id: new mongoose.Types.ObjectId(),
       title: faker.lorem.sentence(),
