@@ -10,10 +10,9 @@ import debug from './utils/debug.utils'
 
 const appNAMESPACE = `APP-${moment.utc().toISOString()}`
 const dbNAMESPACE = `DATABASE-${moment.utc().toISOString()}`
-let server
 
 const init = async () => {
-  server = Hapi.server({
+  const server = Hapi.server({
     port: config.port,
     host: config.host
   })
