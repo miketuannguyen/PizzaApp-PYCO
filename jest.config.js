@@ -4,7 +4,13 @@ module.exports = {
   reporters: ['default', 'jest-html-reporters'],
   testEnvironment: 'node',
   collectCoverage: true,
-  collectCoverageFrom: ['test/*/*.js'],
+  collectCoverageFrom: [
+    'src/repositories/*.{js,jsx}',
+    'src/services/*.{js,jsx}',
+    'src/controllers/*.{js,jsx}',
+    'src/utils/*.{js,jsx}',
+    '!src/utils/debug.utils.js'
+  ],
   coverageThreshold: {
     global: {
       branches: 80,

@@ -18,7 +18,7 @@ export const login = async (request, h) => {
 
   const userInstance = await userService.authenticate(phone, password)
   if (!userInstance) {
-    return Boom.unauthorized('Invalid email or password')
+    return Boom.unauthorized('Invalid phone or password')
   }
 
   const token = crypt.createAuthToken(userInstance._id)

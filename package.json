@@ -9,7 +9,7 @@
     "lint": "eslint src",
     "build": "babel src -d build",
     "test": "jest",
-    "test:coverage": "jest --coverage test"
+    "test:coverage": "jest --coverage"
   },
   "pre-commit": [
     "lint"

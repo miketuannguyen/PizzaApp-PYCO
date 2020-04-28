@@ -15,7 +15,7 @@ export const findById = async (userId) => {
 export const authenticate = async (phone, password) => {
   const userInstance = await userRepo.findByPhone(phone)
   if (userInstance && userInstance.validPassword(password)) {
-    delete userInstance.password
+    userInstance.password = undefined
     return userInstance
   }
   return null
