@@ -37,6 +37,7 @@
     "debug": "^4.1.1",
     "dotenv": "^8.2.0",
     "faker": "^4.1.0",
+    "hapi-auth-bearer-token": "^6.1.6",
     "hapi-swagger": "^13.0.0",
     "http": "^0.0.1-security",
     "http-status-code": "^2.1.0",

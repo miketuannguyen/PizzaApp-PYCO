@@ -10,13 +10,13 @@ config.path = `${envRootPath}`;
 dotenv.config(config);
 
 module.exports = {
-  port: process.env.PORT,
-  host: process.env.HOST,
-  basePath: process.env.BASE_PATH,
-  mongoUri: process.env.MONGO_URI,
-  databaseName: process.env.DATABASE_NAME,
+  PORT: process.env.PORT,
+  HOST: process.env.HOST,
+  MONGO_URI: process.env.MONGO_URI,
+  DATABASE_NAME: process.env.DATABASE_NAME,
   SALT_ROUNDS: process.env.SALT_ROUNDS,
   JWT_SECRET: process.env.JWT_SECRET,
   TOKEN_EXPIRED_TIME: process.env.TOKEN_EXPIRED_TIME,
+  JWT_BEARER_TOKEN_AUTHORIZATION: 'JWT Bearer Token Authorization',
   pkg
 };

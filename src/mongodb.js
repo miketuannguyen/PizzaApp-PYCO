@@ -8,7 +8,7 @@ const NAMESPACE = `DATABASE-${moment.utc().toISOString()}`
 export const connectMongo = async () => {
   mongoose.Promise = global.Promise;
 
-  await mongoose.connect(config.mongoUri, {
+  await mongoose.connect(config.MONGO_URI, {
     useCreateIndex: true,
     useNewUrlParser: true,
     useUnifiedTopology: true,

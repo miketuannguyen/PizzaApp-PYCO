@@ -7,10 +7,10 @@ const NAMESPACE = `Mongo migration-${moment.utc().toISOString()}`
 const mongoConfig = {
   mongodb: {
     // TODO Change (or review) the url to your MongoDB:
-    url: config.mongoUri,
+    url: config.MONGO_URI,
 
     // TODO Change this to your database name:
-    databaseName: config.databaseName,
+    databaseName: config.DATABASE_NAME,
 
     options: {
       useNewUrlParser: true, // removes a deprecation warning when connecting

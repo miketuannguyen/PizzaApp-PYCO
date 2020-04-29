@@ -11,7 +11,7 @@ const comparePassword = (password, hash) => {
 }
 
 const createAuthToken = (userId) => {
-  return jwt.sign({ id: userId }, JWT_SECRET, { expiresIn: TOKEN_EXPIRED_TIME })
+  return jwt.sign({ userId }, JWT_SECRET, { expiresIn: TOKEN_EXPIRED_TIME })
 }
 
 module.exports = {

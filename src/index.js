@@ -7,14 +7,17 @@ import config from './config'
 import { connectMongo } from './mongodb'
 import moment from 'moment'
 import debug from './utils/debug.utils'
+import { findById } from './services/user.service'
+import jwt from 'jsonwebtoken'
+import Boom from '@hapi/boom'
 
 const appNAMESPACE = `APP-${moment.utc().toISOString()}`
 const dbNAMESPACE = `DATABASE-${moment.utc().toISOString()}`
 
 const init = async () => {
   const server = Hapi.server({
-    port: config.port,
-    host: config.host
+    port: config.PORT,
+    host: config.HOST
   })
 
   try {
@@ -25,8 +28,32 @@ const init = async () => {
     process.exit(1)
   }
 
-  await server.route(routes)
   await server.register(plugins)
+  server.auth.strategy(config.JWT_BEARER_TOKEN_AUTHORIZATION, 'bearer-access-token', {
+    validate: async (request, token, h) => {
+      let isValid = false
+      let credentials = {}
+
+      try {
+        const { userId } = jwt.verify(token, config.JWT_SECRET)
+        const userInstance = await findById(userId)
+        
+        if (userInstance) {
+          isValid = true
+          credentials = { user: userInstance, token }
+        }
+
+        return { isValid, credentials, artifacts: {} }
+      }
+      catch (err) {
+        debug.log(appNAMESPACE, 'INFO: Server running on %s', server.info.uri)
+        throw err
+      }
+    },
+    unauthorized: async () => Boom.unauthorized('You need to login first!')
+  })
+
+  await server.route(routes)
 
   server.events.on('start', () => {
     debug.log(appNAMESPACE, 'INFO: Server running on %s', server.info.uri)
