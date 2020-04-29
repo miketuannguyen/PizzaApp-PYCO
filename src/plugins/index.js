@@ -18,7 +18,7 @@ export default [
       securityDefinitions: {
         jwt: {
           type: 'apiKey',
-          name: config.JWT_BEARER_TOKEN_AUTHORIZATION,
+          name: config.JWT_BEARER_TOKEN_AUTHENTICATION,
           in: 'header'
         }
       }
