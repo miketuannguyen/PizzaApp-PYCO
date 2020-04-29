@@ -11,7 +11,8 @@ Mobile ->> Mobile: Store (user's information, JWT token)
 loop jwt token expired
   User -> Mobile: Use features
   Mobile -> Backend: Request resources (Bearer JWT token, requestBody)
-  Backend -> Database: CRUD (query)
+  Backend -> Backend: Validate JWT (JWT token): userId
+  Backend -> Database: CRUD (query, userId)
   Database --> Backend: Response: data
   Backend --> Mobile: Response: payload
   Mobile --> User: Display: data
