@@ -1,7 +1,7 @@
 FROM node:12.16.1
 RUN mkdir -p pizzaapp-pyco
 WORKDIR /pizzaapp-pyco
-COPY build src
+COPY build build
 COPY migrations migrations
 COPY package.json .
 COPY .env .
