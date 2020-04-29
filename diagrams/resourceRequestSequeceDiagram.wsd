@@ -1,0 +1,16 @@
+@startuml
+actor User
+User -> Mobile: Use features
+Mobile -> Backend: Request resources (Bearer JWT token, requestBody)
+Backend -> Backend: Validate JWT (Bearer JWT token): userId
+
+alt Token is valid
+  Backend -> Database: CRUD (query, userId)
+  Database --> Backend: Response: data
+  Backend --> Mobile: Response: payload
+  Mobile --> User: Display: data
+else Token is invalid
+  Backend --> Mobile: Reponse: Invalid JWT Token
+  Mobile --> User: Prevent user using features and request login
+end
+@enduml
