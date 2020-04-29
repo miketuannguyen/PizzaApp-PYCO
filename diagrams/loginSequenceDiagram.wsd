@@ -2,19 +2,42 @@
 actor User
 User -> Mobile: Login (phone, password)
 Mobile -> Backend: POST /user/login (phone, password)
-Backend -> Database: Find user (phone)
-Database --> Backend: Response: user's information
-Backend -> Backend: Authenticate user (password) and generate JWT token (userId)
-Backend --> Mobile: Response: user's information, JWT token
-Mobile -> User: Log user in
-Mobile ->> Mobile: Store (user's information, JWT token)
-loop jwt token expired
-  User -> Mobile: Use features
-  Mobile -> Backend: Request resources (Bearer JWT token, requestBody)
-  Backend -> Backend: Validate JWT (JWT token): userId
-  Backend -> Database: CRUD (query, userId)
-  Database --> Backend: Response: data
-  Backend --> Mobile: Response: payload
-  Mobile --> User: Display: data
+Backend -> Backend: Schema validate (phone, password): isValid
+
+alt isValid === true
+  Backend -> Database: Find user (phone)
+  Database --> Backend: userInstance = Response: user's information
+  Backend -> Backend: Authenticate user (password): isPasswordValid
+
+  alt userInstance !== null && isPasswordValid === true
+    Backend -> Backend: generate JWT token (userId): token
+    Backend --> Mobile: Response: userInstance, token
+    Mobile -> User: Log user in
+    Mobile ->> Mobile: Store (userInstance, JWT token)
+
+    loop jwt token expired
+      User -> Mobile: Use features
+      Mobile -> Backend: Request resources (Bearer JWT token, requestBody)
+      Backend -> Backend: Validate JWT (Bearer JWT token): userId
+
+      alt Token is valid
+        Backend -> Database: CRUD (query, userId)
+        Database --> Backend: Response: data
+        Backend --> Mobile: Response: payload
+        Mobile --> User: Display: data
+      else Token is invalid
+        Backend --> Mobile: Reponse: Invalid JWT Token
+        Mobile --> User: Prevent user using features and request login
+      end
+    end
+
+  else userInstance === null || isPasswordValid === false
+    Backend --> Mobile: Reponse: Invalid phone or Password
+    Mobile --> User: Display error messsage: Invalid phone or Password
+  end
+
+else isValid === false
+  Backend --> Mobile: Reponse: Invalid payload input
+  Mobile --> User: Display error messsage: Invalid payload input
 end
 @enduml
