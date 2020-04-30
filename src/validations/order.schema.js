@@ -93,4 +93,4 @@ export const orderResponseSchema = Joi.object({
     .trim()
     .required()
     .example('A note in order')
-}).label('Order')
+}).label('Order Response')
