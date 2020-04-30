@@ -13,18 +13,15 @@ export const orderLineSchema = Joi.object({
   quantity: Joi
     .number()
     .required()
+    .min(0)
     .example('2')
 }).label('Order Line')
 
 export const orderSchema = Joi.object({
-  user: Joi
-    .string()
-    .trim()
-    .required()
-    .example('5e9e969745787b2cc452752f'),
   orderLineArray: Joi
     .array()
     .items(orderLineSchema)
+    .required()
     .label('Order Line Array'),
   phone: Joi
     .string()
@@ -41,5 +38,10 @@ export const orderSchema = Joi.object({
     .string()
     .trim()
     .required()
-    .example('01 Nguyen Thi Minh Khai')
+    .example('01 Nguyen Thi Minh Khai'),
+  totalPrice: Joi
+    .number()
+    .required()
+    .min(0)
+    .example('30')
 }).label('Order')

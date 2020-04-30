@@ -17,6 +17,6 @@ module.exports = {
   SALT_ROUNDS: process.env.SALT_ROUNDS,
   JWT_SECRET: process.env.JWT_SECRET,
   TOKEN_EXPIRED_TIME: process.env.TOKEN_EXPIRED_TIME,
-  JWT_BEARER_TOKEN_AUTHENTICATION: 'JWT Bearer Token Authorization',
+  JWT_BEARER_TOKEN_AUTHORIZATION: 'JWT Bearer Token Authorization',
   pkg
 };

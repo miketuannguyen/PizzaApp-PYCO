@@ -1,6 +1,6 @@
 import mongoose from 'mongoose'
 
-const optionSchema = new mongoose.Schema(
+export const optionSchema = new mongoose.Schema(
   {
     title: {
       type: String,

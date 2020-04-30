@@ -14,6 +14,7 @@ export const optionSchema = Joi.object({
   price: Joi
     .number()
     .required()
+    .min(0)
     .example('1'),
   type: Joi
     .string()
