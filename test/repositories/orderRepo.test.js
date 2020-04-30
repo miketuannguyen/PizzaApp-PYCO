@@ -61,7 +61,8 @@ describe('Order repository unit tests', () => {
       name: faker.name.findName(),
       address: faker.address.streetAddress() + ' ' + faker.address.streetName() + ' ' + faker.address.country(),
       totalPrice: chance.integer({ min: 0, max: 50 }),
-      paymentMethod: faker.lorem.word()
+      paymentMethod: faker.lorem.word(),
+      note: faker.lorem.sentence()
     }
 
     const userInstance = await userModel.create({ ...mockUser })
@@ -75,5 +76,6 @@ describe('Order repository unit tests', () => {
     expect(castedOrderInstance.name).toBe(mockOrder.name)
     expect(castedOrderInstance.address).toBe(mockOrder.address)
     expect(castedOrderInstance.totalPrice).toBe(mockOrder.totalPrice)
+    expect(castedOrderInstance.note).toBe(mockOrder.note)
   })
 })

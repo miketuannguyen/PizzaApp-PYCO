@@ -51,6 +51,10 @@ const orderSchema = new mongoose.Schema(
     paymentMethod: {
       type: String,
       required: [true, 'paymentMethod is required']
+    },
+    note: {
+      type: String,
+      default: ''
     }
   },
   { versionKey: false }

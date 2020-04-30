@@ -60,7 +60,8 @@ describe('Order service unit tests', () => {
       phone: faker.phone.phoneNumber(),
       name: faker.name.findName(),
       address: faker.address.streetAddress() + ' ' + faker.address.streetName() + ' ' + faker.address.country(),
-      totalPrice: chance.integer({ min: 0, max: 50 })
+      totalPrice: chance.integer({ min: 0, max: 50 }),
+      note: faker.lorem.sentence()
     }
 
     const userInstance = await userModel.create({ ...mockUser })

@@ -43,5 +43,54 @@ export const orderSchema = Joi.object({
     .number()
     .required()
     .min(0)
-    .example('30')
+    .example('30'),
+  note: Joi
+    .string()
+    .trim()
+    .required()
+    .example('A note in order')
+}).label('Order')
+
+export const orderResponseSchema = Joi.object({
+  _id: Joi
+    .string()
+    .trim()
+    .required()
+    .example('5e9e969745787b2cc452754f'),
+  orderLineArray: Joi
+    .array()
+    .items(orderLineSchema)
+    .required()
+    .label('Order Line Array'),
+  phone: Joi
+    .string()
+    .trim()
+    .required()
+    .pattern(new RegExp('^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-s./0-9]*$'))
+    .example('0903593963'),
+  name: Joi
+    .string()
+    .trim()
+    .required()
+    .example('Luu Tuan Nguyen'),
+  address: Joi
+    .string()
+    .trim()
+    .required()
+    .example('01 Nguyen Thi Minh Khai'),
+  totalPrice: Joi
+    .number()
+    .required()
+    .min(0)
+    .example('30'),
+  paymentMethod: Joi
+    .string()
+    .trim()
+    .required()
+    .example('COD'),
+  note: Joi
+    .string()
+    .trim()
+    .required()
+    .example('A note in order')
 }).label('Order')
