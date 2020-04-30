@@ -17,11 +17,11 @@ describe('Utilities unit tests', () => {
     expect(crypt.comparePassword(secondFakeString, hashedPass)).toBe(false)
   })
 
-  test('Should return true because id decrypted from token matches with previous id', () => {
+  test('Should return true because userId decrypted from token matches with previous id', () => {
     const mongooseID = faker.random.uuid()
     const authToken = crypt.createAuthToken(mongooseID)
-    const { id } = jwt.verify(authToken, JWT_SECRET)
-    expect(id).toBe(mongooseID)
+    const { userId } = jwt.verify(authToken, JWT_SECRET)
+    expect(userId).toBe(mongooseID)
   })
 
 })

@@ -1,16 +1,12 @@
 import userModel from '../models/user.model'
 import moment from 'moment'
 import debug from '../utils/debug.utils'
-import mongoose from 'mongoose'
 
 const NAMESPACE = `userRepository-${moment.utc().toISOString()}`
 
 export const createUser = async (userInfo) => {
   try {
-    return await userModel.create({
-      _id: new mongoose.Types.ObjectId(),
-      ...userInfo
-    })
+    return await userModel.create({ ...userInfo })
   }
   catch (err) {
     debug.error(NAMESPACE, '', err)

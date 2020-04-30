@@ -14,8 +14,10 @@ const orderLineSchema = new mongoose.Schema(
       required: [true, 'quantity is required'],
       min: 0
     }
-  },
-  { versionKey: false }
+  }, {
+    versionKey: false,
+    _id: false
+  }
 )
 
 const orderSchema = new mongoose.Schema(
