@@ -31,25 +31,24 @@ const init = async () => {
   await server.register(plugins)
   server.auth.strategy(config.JWT_BEARER_TOKEN_AUTHORIZATION, 'bearer-access-token', {
     validate: async (request, token, h) => {
-      try {
-        let isValid = false
-        let credentials = {}
-        
-        const { userId } = jwt.verify(token, config.JWT_SECRET)
-        const userInstance = await findById(userId)
-        
-        if (userInstance) {
-          isValid = true
-          credentials = { user: userInstance, token }
+      let isValid = false
+      let credentials = {}
+      let userId = null
+
+      jwt.verify(token, config.JWT_SECRET, (err, decoded) => {
+        if (err) {
+          return Boom.unauthorized(`${err.message}`)
         }
-        return { isValid, credentials, artifacts: {} }
+        userId = decoded.userId
+      })
+      const userInstance = await findById(userId)
+
+      if (userInstance) {
+        isValid = true
+        credentials = { user: userInstance, token }
       }
-      catch (err) {
-        debug.error(appNAMESPACE, '', err)
-        throw err
-      }
-    },
-    unauthorized: async () => Boom.unauthorized('You need to login first!')
+      return { isValid, credentials, artifacts: {} }
+    }
   })
 
   await server.route(routes)

@@ -17,6 +17,8 @@ alt isValid === true
 
     loop jwt token expired
       ref over User, Mobile, Backend, Database: Request Resource
+    else
+      Mobile ->> User: Request login again
     end
 
   else userInstance === null || isPasswordValid === false
