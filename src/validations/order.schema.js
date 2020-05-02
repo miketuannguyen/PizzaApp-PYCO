@@ -46,8 +46,8 @@ export const orderSchema = Joi.object({
     .example('30'),
   note: Joi
     .string()
+    .optional()
     .trim()
-    .required()
     .example('A note in order')
 }).label('Order')
 
@@ -91,6 +91,5 @@ export const orderResponseSchema = Joi.object({
   note: Joi
     .string()
     .trim()
-    .required()
     .example('A note in order')
 }).label('Order Response')
