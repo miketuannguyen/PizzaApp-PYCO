@@ -93,5 +93,9 @@ export const orderResponseSchema = Joi.object({
   note: Joi
     .string()
     .trim()
-    .example('A note in order')
+    .example('A note in order'),
+  createdAt: Joi
+    .date()
+    .timestamp()
+    .required()
 }).label('Order Response')

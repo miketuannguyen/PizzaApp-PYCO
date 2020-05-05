@@ -55,6 +55,10 @@ const orderSchema = new mongoose.Schema(
     note: {
       type: String,
       default: ''
+    },
+    createdAt: {
+      type: Date,
+      default: Date.now()
     }
   },
   { versionKey: false }
