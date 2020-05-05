@@ -1,5 +1,4 @@
 import mongoose from 'mongoose'
-import { optionSchema } from './option.model'
 
 const orderLineSchema = new mongoose.Schema(
   {
@@ -8,7 +7,9 @@ const orderLineSchema = new mongoose.Schema(
       ref: 'Product',
       required: true
     },
-    optionArray: [optionSchema],
+    optionArray: [{
+      type: mongoose.Types.ObjectId
+    }],
     quantity: {
       type: Number,
       required: [true, 'quantity is required'],

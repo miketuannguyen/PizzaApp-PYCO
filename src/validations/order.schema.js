@@ -11,7 +11,6 @@ export const orderLineSchema = Joi.object({
     .items(Joi
       .string()
       .trim()
-      .required()
       .example('5e9e969745787b2cc452754f')),
   quantity: Joi
     .number()

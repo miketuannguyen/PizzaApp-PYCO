@@ -52,4 +52,30 @@ describe('Option repository unit tests', () => {
     const castedOptionList = optionList.map((opt) => opt.toObject())
     expect(mockOptionsOfProduct).toIncludeSameMembers(castedOptionList);
   })
+
+  test('Should return options after finding by id', async () => {
+    const mockProduct = {
+      _id: new mongoose.Types.ObjectId(),
+      title: faker.lorem.sentence(),
+      description: faker.lorem.sentence(),
+      price: chance.integer({ min: 0, max: 15 }),
+      rate: chance.floating({ min: 0, max: 5, fixed: 1 }),
+      imageUrl: faker.image.imageUrl(),
+      category: new mongoose.Types.ObjectId()
+    }
+
+    const mockOption = {
+      _id: new mongoose.Types.ObjectId(),
+      title: faker.lorem.sentence(),
+      price: chance.integer({ min: 0, max: 1 }),
+      type: faker.random.word(),
+      product: mockProduct._id
+    }
+
+    await productModel.create(mockProduct)
+    await optionModel.create(mockOption)
+
+    const optionInstance = await optionRepo.findOptionById(mockOption._id)
+    expect(optionInstance.toObject()).toStrictEqual(mockOption);
+  })
 })

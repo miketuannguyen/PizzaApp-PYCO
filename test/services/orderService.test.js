@@ -24,37 +24,11 @@ describe('Order service unit tests', () => {
     const mockOrder = {
       orderLineArray: [{
         product: new mongoose.Types.ObjectId(),
-        optionArray: [{
-          _id: new mongoose.Types.ObjectId(),
-          title: faker.random.words(),
-          price: chance.integer({ min: 1, max: 3 }),
-          type: faker.random.words(),
-          product: new mongoose.Types.ObjectId()
-        },
-        {
-          _id: new mongoose.Types.ObjectId(),
-          title: faker.random.words(),
-          price: chance.integer({ min: 1, max: 3 }),
-          type: faker.random.words(),
-          product: new mongoose.Types.ObjectId()
-        }],
+        optionArray: [new mongoose.Types.ObjectId(), new mongoose.Types.ObjectId()],
         quantity: chance.integer({ min: 1, max: 3 })
       }, {
         product: new mongoose.Types.ObjectId(),
-        optionArray: [{
-          _id: new mongoose.Types.ObjectId(),
-          title: faker.random.words(),
-          price: chance.integer({ min: 1, max: 3 }),
-          type: faker.random.words(),
-          product: new mongoose.Types.ObjectId()
-        },
-        {
-          _id: new mongoose.Types.ObjectId(),
-          title: faker.random.words(),
-          price: chance.integer({ min: 1, max: 3 }),
-          type: faker.random.words(),
-          product: new mongoose.Types.ObjectId()
-        }],
+        optionArray: [new mongoose.Types.ObjectId(), new mongoose.Types.ObjectId()],
         quantity: chance.integer({ min: 1, max: 3 })
       }],
       phone: faker.phone.phoneNumber(),

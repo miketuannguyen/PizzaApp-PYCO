@@ -35,12 +35,18 @@ const mockOptionsOfProduct = [{
 }]
 
 jest.mock('../../src/repositories/option.repo', () => ({
-  findAllOptionsOfProduct: () => mockOptionsOfProduct
+  findAllOptionsOfProduct: () => mockOptionsOfProduct,
+  findOptionById: () => mockOptionsOfProduct[0]
 }))
 
 describe('Option service unit tests', () => {
-  test('Should return all products of category', async () => {
+  test('Should return all options of product', async () => {
     const optionList = await optionService.findAllOptionsOfProduct(mockProduct._id)
     expect(mockOptionsOfProduct).toIncludeSameMembers(optionList);
+  })
+
+  test('Should return option after finding by id', async () => {
+    const optionInstance = await optionService.findOptionById(mockOptionsOfProduct[0]._id)
+    expect(optionInstance).toStrictEqual(mockOptionsOfProduct[0]);
   })
 })

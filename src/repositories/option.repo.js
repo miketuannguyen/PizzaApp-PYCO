@@ -13,3 +13,13 @@ export const findAllOptionsOfProduct = async (productId) => {
     throw err
   }
 }
+
+export const findOptionById = async (optionId) => {
+  try {
+    return await optionModel.findById(optionId)
+  }
+  catch (err) {
+    debug.error(NAMESPACE, '', err)
+    throw err
+  }
+}
