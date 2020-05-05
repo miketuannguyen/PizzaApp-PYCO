@@ -7,7 +7,7 @@ export const findProductById = async (request, h) => {
 
   const productInstance = await productService.findProductById(productId)
   if (!productInstance) {
-    return Boom.badRequest(`Product with id ${productId} does not exist!`)
+    return Boom.badRequest(`Product with ${productId} id does not exist!`)
   }
   return productInstance
 }
@@ -17,7 +17,7 @@ export const findAllOptionsOfProduct = async (request, h) => {
 
   const productInstance = await productService.findProductById(productId)
   if (!productInstance) {
-    return Boom.badRequest(`Product with id ${productId} does not exist!`)
+    return Boom.badRequest(`Product with ${productId} id does not exist!`)
   }
 
   return await optionService.findAllOptionsOfProduct(productId)

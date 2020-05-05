@@ -11,7 +11,7 @@ export const findAllProductsOfCategory = async (request, h) => {
 
   const categoryInstance = await categoryService.findCategoryById(categoryId)
   if (!categoryInstance) {
-    return Boom.badRequest(`Category with id ${categoryId} does not exist!`)
+    return Boom.badRequest(`Category with ${categoryId} id does not exist!`)
   }
 
   return await productService.findAllProductsOfCategory(categoryId)

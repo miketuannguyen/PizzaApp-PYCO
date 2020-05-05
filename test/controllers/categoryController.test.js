@@ -1,6 +1,7 @@
 import faker from 'faker'
 import * as categoryController from '../../src/controllers/category.controller'
 import mongoose from 'mongoose'
+import { isBoom } from '@hapi/boom'
 
 const chance = require('chance').Chance()
 
@@ -45,7 +46,16 @@ const mockProductsOfCategory = [{
 }]
 
 jest.mock('../../src/services/category.service', () => ({
-  findAll: () => mockCategories
+  findAll: () => mockCategories,
+  findCategoryById: (categoryId) => {
+    let result = null
+    mockCategories.forEach((mockCate) => {
+      if (mockCate._id.equals(categoryId)) {
+        result = mockCate
+      }
+    })
+    return result
+  }
 }))
 
 jest.mock('../../src/services/product.service', () => ({
@@ -55,12 +65,18 @@ jest.mock('../../src/services/product.service', () => ({
 describe('Category controller unit tests', () => {
   test('Should return all categories', async () => {
     const categoryList = await categoryController.findAll({})
-    expect(mockCategories).toIncludeSameMembers(categoryList);
+    expect(mockCategories).toIncludeSameMembers(categoryList)
   })
 
   test('Should return all products of category', async () => {
     const mockReq = { params: { categoryId: mockCategories[0]._id } }
     const productList = await categoryController.findAllProductsOfCategory(mockReq, {})
-    expect(mockProductsOfCategory).toIncludeSameMembers(productList);
+    expect(mockProductsOfCategory).toIncludeSameMembers(productList)
+  })
+
+  test('Should return boom 400 because of fake id', async () => {
+    const mockReq = { params: { categoryId: new mongoose.Types.ObjectId() } }
+    const result = await categoryController.findAllProductsOfCategory(mockReq, {})
+    expect(isBoom(result, 400)).toBe(true)
   })
 })

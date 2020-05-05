@@ -2,7 +2,7 @@ import * as dbHandler from '../mongoMemoryHandler'
 import * as userController from '../../src/controllers/user.controller'
 import faker from 'faker'
 import crypt from '../../src/utils/crypt.utils'
-import Boom from '@hapi/boom'
+import { isBoom } from '@hapi/boom'
 
 const mockPassword = faker.random.word()
 
@@ -36,7 +36,7 @@ describe('User controller unit tests', () => {
   test('Should return 400 bad request boom after registering because phone was used', async () => {
     const mockReq = { payload: mockUser }
     const result = await userController.register(mockReq, {})
-    expect(Boom.isBoom(result, 400)).toBe(true)
+    expect(isBoom(result, 400)).toBe(true)
   })
 
   test('Should return user info and token after login', async () => {
@@ -52,6 +52,6 @@ describe('User controller unit tests', () => {
   test('Should return 400 bad request boom after login because phone was not registered', async () => {
     const mockReq = { payload: { phone: mockUser.phone, password: faker.random.word() } }
     const result = await userController.login(mockReq, {})
-    expect(Boom.isBoom(result, 401)).toBe(true)
+    expect(isBoom(result, 401)).toBe(true)
   })
 })
