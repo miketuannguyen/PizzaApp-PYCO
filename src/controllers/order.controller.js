@@ -8,32 +8,27 @@ export const createCODOrder = async (request, h) => {
   const { user } = request.auth.credentials
   const orderInfo = request.payload
 
-  let testTotalPrice = 0
+  let totalPrice = 0
   for (const orderLine of orderInfo.orderLineArray) {
     const productInstance = await findProductById(orderLine.product)
     if (!productInstance) {
-      return Boom.unauthorized(`Product with ${orderLine.product} does not exist!`)
+      return Boom.badRequest(`Product with ${orderLine.product} does not exist!`)
     }
 
     let optionArrayPrice = 0
     const { optionArray } = orderLine
-    if (optionArray) {
-      for (const optionId of optionArray) {
-        const optionInstance = await findOptionById(optionId)
-        if (!optionInstance) {
-          return Boom.unauthorized(`Option with ${optionId} does not exist!`)
-        }
-        if (!optionInstance.product.equals(productInstance._id)) {
-          return Boom.unauthorized(`Option with ${optionId} does not belong to product with ${productInstance._id} id!`)
-        }
-        optionArrayPrice += optionInstance.price
+    for (const optionId of optionArray) {
+      const optionInstance = await findOptionById(optionId)
+      if (!optionInstance) {
+        return Boom.badRequest(`Option with ${optionId} does not exist!`)
       }
+      if (!optionInstance.product.equals(productInstance._id)) {
+        return Boom.badRequest(`Option with ${optionId} does not belong to product with ${productInstance._id} id!`)
+      }
+      optionArrayPrice += optionInstance.price
     }
-    testTotalPrice += (productInstance.price + optionArrayPrice) * orderLine.quantity
+    totalPrice += (productInstance.price + optionArrayPrice) * orderLine.quantity
   }
 
-  if (testTotalPrice !== orderInfo.totalPrice) {
-    return Boom.unauthorized('totalPrice is not valid.')
-  }
-  return await orderService.createCODOrder(user._id, orderInfo)
+  return await orderService.createCODOrder(user._id, orderInfo, totalPrice)
 }

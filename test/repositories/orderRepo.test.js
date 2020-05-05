@@ -51,5 +51,6 @@ describe('Order repository unit tests', () => {
     expect(castedOrderInstance.address).toBe(mockOrder.address)
     expect(castedOrderInstance.totalPrice).toBe(mockOrder.totalPrice)
     expect(castedOrderInstance.note).toBe(mockOrder.note)
+    expect(castedOrderInstance.createdAt).toBeDefined()
   })
 })

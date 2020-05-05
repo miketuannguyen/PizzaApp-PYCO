@@ -40,7 +40,7 @@ describe('Order service unit tests', () => {
 
     const userInstance = await userModel.create({ ...mockUser })
 
-    const orderInstance = await orderService.createCODOrder(userInstance._id, mockOrder)
+    const orderInstance = await orderService.createCODOrder(userInstance._id, mockOrder, mockOrder.totalPrice)
     const castedOrderInstance = orderInstance.toObject()
     expect(castedOrderInstance._id).toBeDefined()
     expect(castedOrderInstance.user).toStrictEqual(userInstance._id)
