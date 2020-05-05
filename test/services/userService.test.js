@@ -41,7 +41,7 @@ describe('User service unit tests', () => {
   })
 
   test('Should return user after finding by id', async () => {
-    const userResult = await userService.findById(userInstance._id)
+    const userResult = await userService.findUserById(userInstance._id)
     expect(userResult._id).toBeDefined()
     expect(userResult.phone).toBe(mockUser.phone)
     expect(userResult.name).toBe(mockUser.name)

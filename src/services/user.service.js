@@ -8,8 +8,8 @@ export const findByPhone = async (phone) => {
   return await userRepo.findByPhone(phone)
 }
 
-export const findById = async (userId) => {
-  return userRepo.findById(userId)
+export const findUserById = async (userId) => {
+  return userRepo.findUserById(userId)
 }
 
 export const authenticate = async (phone, password) => {

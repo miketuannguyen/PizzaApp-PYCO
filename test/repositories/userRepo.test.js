@@ -39,7 +39,7 @@ describe('User repository unit tests', () => {
   })
 
   test('Should return user with valid info after finding by id', async () => {
-    const userResult = await userRepo.findById(userInstance._id)
+    const userResult = await userRepo.findUserById(userInstance._id)
     expect(userResult._id).toBeDefined()
     expect(userResult.phone).toBe(mockUser.phone)
     expect(userResult.name).toBe(mockUser.name)

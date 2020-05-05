@@ -24,7 +24,7 @@ export const findByPhone = async (phone) => {
   }
 }
 
-export const findById = async (userId) => {
+export const findUserById = async (userId) => {
   try {
     return await userModel.findById(userId)
   }

@@ -7,7 +7,7 @@ import config from './config'
 import { connectMongo } from './mongodb'
 import moment from 'moment'
 import debug from './utils/debug.utils'
-import { findById } from './services/user.service'
+import { findUserById } from './services/user.service'
 import jwt from 'jsonwebtoken'
 import Boom from '@hapi/boom'
 
@@ -41,7 +41,7 @@ const init = async () => {
         }
         userId = decoded.userId
       })
-      const userInstance = await findById(userId)
+      const userInstance = await findUserById(userId)
 
       if (userInstance) {
         isValid = true

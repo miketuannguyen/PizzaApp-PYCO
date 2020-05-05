@@ -13,3 +13,13 @@ export const findAll = async () => {
     throw err
   }
 }
+
+export const findCategoryById = async (categoryId) => {
+  try {
+    return await categoryModel.findById(categoryId)
+  }
+  catch (err) {
+    debug.error(NAMESPACE, '', err)
+    throw err
+  }
+}

@@ -1,5 +1,4 @@
 import Joi from '@hapi/joi'
-import { optionSchema } from './option.schema'
 
 export const orderLineSchema = Joi.object({
   product: Joi
@@ -9,7 +8,11 @@ export const orderLineSchema = Joi.object({
     .example('5e9e969745787b2cc452752f'),
   optionArray: Joi
     .array()
-    .items(optionSchema),
+    .items(Joi
+      .string()
+      .trim()
+      .required()
+      .example('5e9e969745787b2cc452754f')),
   quantity: Joi
     .number()
     .required()
