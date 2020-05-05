@@ -7,7 +7,7 @@ module.exports = {
       await db.collection('options').insertMany([{
         _id: optionIds[0],
         title: 'Size M',
-        price: 1,
+        price: 0,
         type: 'Size',
         product: productIds[0]
       }, {
@@ -19,7 +19,7 @@ module.exports = {
       }, {
         _id: optionIds[2],
         title: 'Size M',
-        price: 1,
+        price: 0,
         type: 'Size',
         product: productIds[1]
       }, {
@@ -31,7 +31,7 @@ module.exports = {
       }, {
         _id: optionIds[4],
         title: 'Size M',
-        price: 1,
+        price: 0,
         type: 'Size',
         product: productIds[2]
       }, {
@@ -43,7 +43,7 @@ module.exports = {
       }, {
         _id: optionIds[6],
         title: 'Size M',
-        price: 1,
+        price: 0,
         type: 'Size',
         product: productIds[3]
       }, {
@@ -55,7 +55,7 @@ module.exports = {
       }, {
         _id: optionIds[8],
         title: 'Size M',
-        price: 1,
+        price: 0,
         type: 'Size',
         product: productIds[4]
       }, {
@@ -67,7 +67,7 @@ module.exports = {
       }, {
         _id: optionIds[10],
         title: 'Size M',
-        price: 1,
+        price: 0,
         type: 'Size',
         product: productIds[5]
       }, {
@@ -79,7 +79,7 @@ module.exports = {
       }, {
         _id: optionIds[12],
         title: 'Thin Crust',
-        price: 1,
+        price: 0,
         type: 'Crust',
         product: productIds[0]
       }, {
@@ -91,7 +91,7 @@ module.exports = {
       }, {
         _id: optionIds[14],
         title: 'Thin Crust',
-        price: 1,
+        price: 0,
         type: 'Crust',
         product: productIds[1]
       }, {
@@ -103,7 +103,7 @@ module.exports = {
       }, {
         _id: optionIds[16],
         title: 'Thin Crust',
-        price: 1,
+        price: 0,
         type: 'Crust',
         product: productIds[2]
       }, {
@@ -115,7 +115,7 @@ module.exports = {
       }, {
         _id: optionIds[18],
         title: 'Thin Crust',
-        price: 1,
+        price: 0,
         type: 'Crust',
         product: productIds[3]
       }, {
@@ -127,7 +127,7 @@ module.exports = {
       }, {
         _id: optionIds[20],
         title: 'Thin Crust',
-        price: 1,
+        price: 0,
         type: 'Crust',
         product: productIds[4]
       }, {
@@ -139,7 +139,7 @@ module.exports = {
       }, {
         _id: optionIds[22],
         title: 'Thin Crust',
-        price: 1,
+        price: 0,
         type: 'Crust',
         product: productIds[5]
       }, {
