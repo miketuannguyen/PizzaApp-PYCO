@@ -98,4 +98,5 @@ export const orderResponseSchema = Joi.object({
     .date()
     .timestamp()
     .required()
+    .example(Date.now())
 }).label('Order Response')
