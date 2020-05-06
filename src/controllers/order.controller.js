@@ -32,3 +32,7 @@ export const createCODOrder = async (request, h) => {
 
   return await orderService.createCODOrder(user._id, orderInfo, totalPrice)
 }
+
+export const getAllOrders = async (request, h) => {
+  return await orderService.getAllOrders()
+}

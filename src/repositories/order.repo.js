@@ -13,3 +13,13 @@ export const createOrder = async (userId, orderInfo) => {
     throw err
   }
 }
+
+export const getAllOrders = async () => {
+  try {
+    return await orderModel.find()
+  }
+  catch (err) {
+    debug.error(NAMESPACE, '', err)
+    throw err
+  }
+}
