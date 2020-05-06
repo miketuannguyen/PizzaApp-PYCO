@@ -22,7 +22,7 @@ export const findAllOrdersWithFullInformation = async () => {
     }).populate({
       path: 'orderLineArray.optionArray',
       populate: 'option'
-    })
+    }).sort({ createdAt: 'desc' })
   }
   catch (err) {
     debug.error(NAMESPACE, '', err)
