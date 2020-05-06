@@ -41,11 +41,6 @@ export const orderSchema = Joi.object({
     .trim()
     .required()
     .example('01 Nguyen Thi Minh Khai'),
-  totalPrice: Joi
-    .number()
-    .required()
-    .min(0)
-    .example('30'),
   note: Joi
     .string()
     .allow('')
