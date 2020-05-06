@@ -2,7 +2,6 @@ import * as orderController from '../controllers/order.controller'
 import basicErrorResponse from '../response'
 import { orderSchema, orderResponseSchema } from '../validations/order.schema'
 import { JWT_BEARER_TOKEN_AUTHORIZATION } from '../config'
-import Joi from '@hapi/joi'
 
 const orderRoute = [
   {
@@ -15,14 +14,13 @@ const orderRoute = [
         'hapi-swagger': {
           responses: {
             200: {
-              description: 'Success',
-              schema: Joi.array().items(orderResponseSchema).label('Order Response Array')
+              description: 'Success'
             }
           }
         }
       }
     },
-    handler: orderController.getAllOrders
+    handler: orderController.findAllOrdersWithFullInformation
   },
   {
     method: 'POST',

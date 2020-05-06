@@ -14,9 +14,15 @@ export const createOrder = async (userId, orderInfo) => {
   }
 }
 
-export const getAllOrders = async () => {
+export const findAllOrdersWithFullInformation = async () => {
   try {
-    return await orderModel.find()
+    return await orderModel.find().populate('user').populate({
+      path: 'orderLineArray.product',
+      populate: 'product'
+    }).populate({
+      path: 'orderLineArray.optionArray',
+      populate: 'option'
+    })
   }
   catch (err) {
     debug.error(NAMESPACE, '', err)

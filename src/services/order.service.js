@@ -6,6 +6,6 @@ export const createCODOrder = async (userId, orderInfo, totalPrice) => {
   return await orderRepo.createOrder(userId, orderInfo)
 }
 
-export const getAllOrders = async () => {
-  return await orderRepo.getAllOrders()
+export const findAllOrdersWithFullInformation = async () => {
+  return await orderRepo.findAllOrdersWithFullInformation()
 }

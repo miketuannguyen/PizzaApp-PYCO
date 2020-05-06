@@ -8,7 +8,9 @@ const orderLineSchema = new mongoose.Schema(
       required: true
     },
     optionArray: [{
-      type: mongoose.Types.ObjectId
+      type: mongoose.Types.ObjectId,
+      ref: 'Option',
+      required: true
     }],
     quantity: {
       type: Number,

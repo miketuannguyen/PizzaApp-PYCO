@@ -17,7 +17,12 @@ const dbNAMESPACE = `DATABASE-${moment.utc().toISOString()}`
 const init = async () => {
   const server = Hapi.server({
     port: config.PORT,
-    host: config.HOST
+    host: config.HOST,
+    routes: {
+      cors: {
+        origin: ['*'] // an array of origins or 'ignore'
+      }
+    }
   })
 
   try {
