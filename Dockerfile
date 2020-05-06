@@ -9,5 +9,4 @@ COPY mongoObjectIdSeeds.js .
 COPY migrate-mongo-config.js .
 RUN ls -l .
 RUN npm install --production
-EXPOSE 3000
 CMD npx migrate-mongo up && npm start
