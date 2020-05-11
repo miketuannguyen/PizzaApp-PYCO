@@ -10,7 +10,11 @@ export const register = async (request, h) => {
     return Boom.badRequest('This phone number was used')
   }
 
-  return userService.createUser({ phone, password, address, name })
+  const userResult = await userService.createUser({ phone, password, address, name })
+
+  const token = crypt.createAuthToken(userResult._id)
+  const response = { user: userResult, token }
+  return response
 }
 
 export const login = async (request, h) => {
