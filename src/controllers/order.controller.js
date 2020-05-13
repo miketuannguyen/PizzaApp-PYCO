@@ -30,7 +30,8 @@ export const createCODOrder = async (request, h) => {
     totalPrice += (productInstance.price + optionArrayPrice) * orderLine.quantity
   }
 
-  return await orderService.createCODOrder(user._id, orderInfo, totalPrice)
+  const orderResult = await orderService.createCODOrder(user._id, orderInfo, totalPrice)
+  return h.response(orderResult).code(201)
 }
 
 export const findAllOrdersWithFullInformation = async (request, h) => {

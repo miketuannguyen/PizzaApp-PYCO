@@ -13,8 +13,7 @@ export const register = async (request, h) => {
   const userResult = await userService.createUser({ phone, password, address, name })
 
   const token = crypt.createAuthToken(userResult._id)
-  const response = { user: userResult, token }
-  return response
+  return h.response({ user: userResult, token }).code(201)
 }
 
 export const login = async (request, h) => {

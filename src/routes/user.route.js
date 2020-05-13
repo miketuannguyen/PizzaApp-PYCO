@@ -13,7 +13,7 @@ const userRoute = [
       plugins: {
         'hapi-swagger': {
           responses: {
-            200: {
+            201: {
               description: 'Success',
               schema: Joi.object({
                 user: userSchema,

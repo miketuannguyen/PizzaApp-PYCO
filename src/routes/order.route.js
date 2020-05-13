@@ -31,7 +31,7 @@ const orderRoute = [
       plugins: {
         'hapi-swagger': {
           responses: {
-            200: {
+            201: {
               description: 'Success',
               schema: orderResponseSchema
             },
